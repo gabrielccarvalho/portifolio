@@ -17,11 +17,72 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #030712;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+}
+
+@keyframes zoomin {
+  0% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ease-load {
+  opacity: 0;
+  animation: 1.2s ease-out 0s 1 zoomin;
+  animation-fill-mode: forwards;
+}
+
+.ease-reveal {
+  animation: 2s ease-out 0s 1 reveal;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.delayed-reveal {
+  opacity: 0;
+  animation: 1s ease-out 2s 1 reveal;
+  animation-fill-mode: forwards;
+}
+
+.delayed-reveal-2 {
+  opacity: 0;
+  animation: 1s ease-out 1.2s 1 reveal;
+  animation-fill-mode: forwards;
+}
+
+.noise-bg {
+  position: absolute;
+  top: 50px;
+  opacity: 0.5;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 900px;
+  z-index: -1;
+
+  background: url('/noise.webp') repeat, linear-gradient(83.21deg, #3730a3 30%, #a21caf 100%);
+  background-blend-mode: overlay;
+  -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.5), transparent 75%);
+  mask-image: radial-gradient(rgba(0, 0, 0, 0.5), transparent 75%);
+
+  @media (max-width: 568px) {
+    opacity: 0;
+  }
 }
